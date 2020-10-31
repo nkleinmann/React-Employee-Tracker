@@ -1,11 +1,8 @@
 // destructuring component and able to use Component in class component versus React.Component
 import React, { Component } from 'react';
 import axios from 'axios';
-// import logo from './logo.svg';
 import './App.css';
-// import { DataGrid, RowsProp, ColDef } from '@material-ui/data-grid';
-
-
+import SortNames from "./components/sort/Sort";
 
 // class component
 class App extends Component {
@@ -32,6 +29,9 @@ class App extends Component {
           <div className="row">
             <div className="col-12 d-flex justify-content-center">
               <input className="searchBar" type="text" placeholder="Search.."></input>
+            </div>
+            <div className="col-12 d-flex justify-content-center">
+            <button className="btn btn-primary searchBtn" onClick={SortNames}>Search</button>
             </div>
           </div>
           <br />
