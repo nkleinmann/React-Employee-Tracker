@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+div.header {
+  background-color: rgb(68, 135, 237);
+  padding: 20px;
+  color: white;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  height: 70px;
+}
+
+input.searchBar {
+  margin: 10px;
+}
