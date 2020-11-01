@@ -1,9 +1,10 @@
 // destructuring component and able to use Component in class component versus React.Component
 import React, { Component, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import './App.css';
 import { API } from './utils/API';
-import { Table } from '@material-ui/core';
+// import { Table } from '@material-ui/core';
+import EnhancedTable from './components/employeeInfo/Employee';
 // import SortNames from "./components/sort/Sort";
 
 // class component
@@ -16,10 +17,24 @@ class App extends Component {
   componentDidMount() {
     API.getEmployees()
     .then((response) => {
+      let employeeDetails = response.data.results.map(employeeInfo => {
+        return {
+          id: employeeInfo.id.value,
+          first: employeeInfo.name.first,
+          last: employeeInfo.name.last,
+          email: employeeInfo.email,
+          phone: employeeInfo.phone,
+          photo: employeeInfo.picture.thumbnail
+        }
+      })
+      // console.log(employeeDetails);
       this.setState({ 
-        employees: response.data.results 
+        employees: employeeDetails,
+        currentSearchArray: employeeDetails
+        // response.data.results 
       });
-    });
+    })
+    .catch(err => console.log(err));
   }
   render() {
     return (
@@ -41,6 +56,7 @@ class App extends Component {
             </div>
           </div>
           <br />
+          <EnhancedTable rows={this.state.currentSearchArray}/>
           <div className="row">
             <div className="col-12 d-flex justify-content-center">
               <table>
