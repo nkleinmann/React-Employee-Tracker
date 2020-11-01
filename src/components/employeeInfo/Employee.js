@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 // import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -90,62 +90,15 @@ function EnhancedTableHead(props) {
     );
 }
 
-// EnhancedTableHead.propTypes = {
-//     classes: PropTypes.object.isRequired,
-//     numSelected: PropTypes.number.isRequired,
-//     onRequestSort: PropTypes.func.isRequired,
-//     onSelectAllClick: PropTypes.func.isRequired,
-//     order: PropTypes.oneOf(['asc', 'desc']).isRequired,
-//     orderBy: PropTypes.string.isRequired,
-//     rowCount: PropTypes.number.isRequired,
-// };
-
-// const useToolbarStyles = makeStyles((theme) => ({
-//     root: {
-//         paddingLeft: theme.spacing(2),
-//         paddingRight: theme.spacing(1),
-//     },
-//     highlight:
-//         theme.palette.type === 'light'
-//             ? {
-//                 color: theme.palette.secondary.main,
-//                 backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-//             }
-//             : {
-//                 color: theme.palette.text.primary,
-//                 backgroundColor: theme.palette.secondary.dark,
-//             },
-//     title: {
-//         flex: '1 1 100%',
-//     },
-// }));
-
-// const EnhancedTableToolbar = (props) => {
-//     const classes = useToolbarStyles();
-//     const { numSelected } = props;
-
-//     return (
-//         <Toolbar
-//             className={clsx(classes.root, {
-//                 [classes.highlight]: numSelected > 0,
-//             })}
-//         >
-//             {numSelected > 0 ? (
-//                 <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
-//                     {numSelected} selected
-//                 </Typography>
-//             ) : (
-//                     <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-//                         Nutrition
-//                     </Typography>
-//                 )}
-//         </Toolbar>
-//     );
-// };
-
-// EnhancedTableToolbar.propTypes = {
-//     numSelected: PropTypes.number.isRequired,
-// };
+EnhancedTableHead.propTypes = {
+    classes: PropTypes.object.isRequired,
+    numSelected: PropTypes.number.isRequired,
+    onRequestSort: PropTypes.func.isRequired,
+    // onSelectAllClick: PropTypes.func.isRequired,
+    order: PropTypes.oneOf(['asc', 'desc']).isRequired,
+    orderBy: PropTypes.string.isRequired,
+    rowCount: PropTypes.number.isRequired,
+};
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -173,7 +126,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function EnhancedTable(props) {
     console.log(props);
-    const rows = props.rows.map(function(employee) {
+    const rows = props.rows.map(function (employee) {
         return {
             id: employee.id,
             first: employee.first,
@@ -198,35 +151,6 @@ export default function EnhancedTable(props) {
         setOrder(isAsc ? 'desc' : 'asc');
         setOrderBy(property);
     };
-
-    // const handleSelectAllClick = (event) => {
-    //     if (event.target.checked) {
-    //         const newSelecteds = rows.map((n) => n.fname);
-    //         setSelected(newSelecteds);
-    //         return;
-    //     }
-    //     setSelected([]);
-    // };
-
-    // const handleClick = (event, name) => {
-    //     const selectedIndex = selected.indexOf(name);
-    //     let newSelected = [];
-
-    //     if (selectedIndex === -1) {
-    //         newSelected = newSelected.concat(selected, name);
-    //     } else if (selectedIndex === 0) {
-    //         newSelected = newSelected.concat(selected.slice(1));
-    //     } else if (selectedIndex === selected.length - 1) {
-    //         newSelected = newSelected.concat(selected.slice(0, -1));
-    //     } else if (selectedIndex > 0) {
-    //         newSelected = newSelected.concat(
-    //             selected.slice(0, selectedIndex),
-    //             selected.slice(selectedIndex + 1),
-    //         );
-    //     }
-
-    //     setSelected(newSelected);
-    // };
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -275,24 +199,10 @@ export default function EnhancedTable(props) {
                                     return (
                                         <TableRow
                                             hover
-                                            // onClick={(event) => handleClick(event, row.name)}
-                                            // role="checkbox"
-                                            // aria-checked={isItemSelected}
                                             tabIndex={-1}
-                                            key={row.name}
-                                            // selected={isItemSelected}
-
+                                            key={row.id}
                                         >
-                                            {/* <TableCell padding="checkbox">
-                                                <Checkbox
-                                                    checked={isItemSelected}
-                                                    inputProps={{ 'aria-labelledby': labelId }}
-                                                />
-                                            </TableCell> */}
-                                            {/* <TableCell component="th" id={labelId} scope="row" padding="none">
-                                                {row.image}
-                                            </TableCell> */}
-                                            <TableCell alight="center"><img src={row.photo} alt={row.last} widht="50" height="50"/></TableCell>
+                                            <TableCell alight="center"><img src={row.photo} alt={row.last} widht="50" height="50" /></TableCell>
                                             <TableCell align="right">{row.first}</TableCell>
                                             <TableCell align="right">{row.last}</TableCell>
                                             <TableCell align="right">{row.email}</TableCell>
@@ -318,10 +228,6 @@ export default function EnhancedTable(props) {
                     onChangeRowsPerPage={handleChangeRowsPerPage}
                 />
             </Paper>
-            {/* <FormControlLabel
-                control={<Switch checked={dense} onChange={handleChangeDense} />}
-                label="Dense padding"
-            /> */}
         </div>
     );
 }
