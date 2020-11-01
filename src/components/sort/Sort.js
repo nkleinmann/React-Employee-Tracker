@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import App from './App';
 
-// function SortNames(employee) {
-//     console.log("This worked!");
+function SortNames(employee) {
+    console.log("This worked!");
 //     employee.sort();
 //     console.log(`This is the sorted version ${employee}`);
 //     // resource: https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
@@ -14,6 +14,8 @@ import App from './App';
 //     // <div key={i}> {item.matchID} {item.timeM}{item.description} </div>
 //     // );
 //     // https://stackoverflow.com/questions/43572436/sort-an-array-of-objects-in-react-and-render-them/43572944
-// }
+// Resource: https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/
+employee.sort((a,b) => (a.name.last > b.name.last) ? 1 : -1)
+}
 
-// export default SortNames;
+export default SortNames;

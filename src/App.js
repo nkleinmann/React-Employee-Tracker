@@ -1,24 +1,10 @@
 // destructuring component and able to use Component in class component versus React.Component
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import { API } from './utils/API';
+import { Table } from '@material-ui/core';
 // import SortNames from "./components/sort/Sort";
-
-function SortNames(employee) {
-  console.log("This worked!");
-  employee.sort();
-  console.log(`This is the sorted version ${employee}`);
-  // resource: https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
-
-
-  // const myData = [].concat(this.state.employees)
-  // .sort((a, b) => a.itemM > b.itemM ? 1: -1)
-  // .map((item, i) =>
-  // <div key={i}> {item.matchID} {item.timeM}{item.description} </div>
-  // );
-  // https://stackoverflow.com/questions/43572436/sort-an-array-of-objects-in-react-and-render-them/43572944
-}
 
 // class component
 class App extends Component {
@@ -50,7 +36,8 @@ class App extends Component {
               <input className="searchBar" type="text" placeholder="Search.."></input>
             </div>
             <div className="col-12 d-flex justify-content-center">
-            <button className="btn btn-primary searchBtn" onClick={SortNames}>Search</button>
+            <button className="btn btn-primary searchBtn">Search</button>
+            {/* onClick={SortNames} */}
             </div>
           </div>
           <br />
@@ -68,10 +55,9 @@ class App extends Component {
                 </thead>
                 {this.state.employees.map((employee) => {
                   return (
-                    <tbody>
-                    <tr >
-                    {/* key={employee.id.value.toString()} */}
-                      <td><img src={employee.picture.thumbnail}></img></td>
+                    <tbody key={employee.id.value}>
+                    <tr>
+                      <td ><img src={employee.picture.thumbnail}></img></td>
                       <td>{employee.name.first}</td>
                       <td>{employee.name.last}</td>
                       <td>{employee.email}</td>
@@ -91,27 +77,7 @@ class App extends Component {
   }
 }
 
-// sort function
-// function ProductTable(props) {
-//   const { products } = props;
-//   let sortedProducts = [...products];
-//   sortedProducts.sort((a, b) => {
-//     if (a.name < b.name) {
-//       return -1;
-//     }
-//     if (a.name > b.name) {
-//       return 1;
-//     }
-//     return 0;
-//   });
-//   return (
-//     <Table>
-//       {/* as before */}
-//     </Table>
-//   );
-// }
-// https://www.smashingmagazine.com/2020/03/sortable-tables-react/
-
 
 
 export default App;
+
