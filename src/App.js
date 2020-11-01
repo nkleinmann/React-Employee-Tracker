@@ -11,12 +11,16 @@ import EnhancedTable from './components/employeeInfo/Employee';
 class App extends Component {
   constructor() {
     super();
-    this.state = { employees: [] };
+    this.state = { 
+      employees: [],
+      currentSearchArray: []
+     };
   }
   // api calls in this function (life cycle method)
   componentDidMount() {
     API.getEmployees()
     .then((response) => {
+      console.log(response);
       let employeeDetails = response.data.results.map(employeeInfo => {
         return {
           id: employeeInfo.id.value,
@@ -27,12 +31,12 @@ class App extends Component {
           photo: employeeInfo.picture.thumbnail
         }
       })
-      // console.log(employeeDetails);
       this.setState({ 
         employees: employeeDetails,
         currentSearchArray: employeeDetails
         // response.data.results 
       });
+      
     })
     .catch(err => console.log(err));
   }
@@ -52,12 +56,11 @@ class App extends Component {
             </div>
             <div className="col-12 d-flex justify-content-center">
             <button className="btn btn-primary searchBtn">Search</button>
-            {/* onClick={SortNames} */}
             </div>
           </div>
           <br />
           <EnhancedTable rows={this.state.currentSearchArray}/>
-          <div className="row">
+          {/* <div className="row">
             <div className="col-12 d-flex justify-content-center">
               <table>
                 <thead>
@@ -84,16 +87,14 @@ class App extends Component {
                 })}
               </table>
 
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
         </div>
 
       </div>
     )
   }
 }
-
-
 
 export default App;
 
