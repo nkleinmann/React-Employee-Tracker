@@ -34,7 +34,6 @@ class App extends Component {
       this.setState({ 
         employees: employeeDetails,
         currentSearchArray: employeeDetails
-        // response.data.results 
       });
       
     })
@@ -43,7 +42,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {console.log(this.state.employees)}
+        {/* {console.log(this.state.employees)} */}
         <div className="container">
           <div className="row header">
             <div className="col-12 d-flex justify-content-center">
