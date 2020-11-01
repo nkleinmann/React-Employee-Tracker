@@ -51,7 +51,7 @@ class App extends Component {
           </div>
           <div className="row">
             <div className="col-12 d-flex justify-content-center">
-              <input className="searchBar" type="text" placeholder="Search.."></input>
+              <input className="searchBar" type="text" placeholder="Search for last name..."></input>
             </div>
             <div className="col-12 d-flex justify-content-center">
             <button className="btn btn-primary searchBtn">Search</button>
@@ -59,35 +59,6 @@ class App extends Component {
           </div>
           <br />
           <EnhancedTable rows={this.state.currentSearchArray}/>
-          {/* <div className="row">
-            <div className="col-12 d-flex justify-content-center">
-              <table>
-                <thead>
-                <tr>
-                  <th>Profile Image</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
-                  <th>Phone Number</th>
-                </tr>
-                </thead>
-                {this.state.employees.map((employee) => {
-                  return (
-                    <tbody key={employee.id.value}>
-                    <tr>
-                      <td ><img src={employee.picture.thumbnail}></img></td>
-                      <td>{employee.name.first}</td>
-                      <td>{employee.name.last}</td>
-                      <td>{employee.email}</td>
-                      <td>{employee.cell}</td>
-                    </tr>
-                    </tbody>
-                  )
-                })}
-              </table>
-
-            </div> */}
-          {/* </div> */}
         </div>
 
       </div>

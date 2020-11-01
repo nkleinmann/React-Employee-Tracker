@@ -1,7 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-// import clsx from 'clsx';
-import { lighten, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,14 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
-// import App from './App.js';
-// import { API } from './utils/API';
+
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -47,7 +39,6 @@ function stableSort(array, comparator) {
 
 const headCells = [
     { id: 'image', numeric: false, disablePadding: true, label: 'Profile Image' },
-    // { id: 'id', numeric: false, disablePadding: true, label: 'ID' },
     { id: 'fname', numeric: true, disablePadding: false, label: 'First Name' },
     { id: 'lname', numeric: true, disablePadding: false, label: 'Last Name' },
     { id: 'email', numeric: true, disablePadding: false, label: 'Email' },
@@ -55,7 +46,7 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
-    const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
+    const { classes, order, orderBy, onRequestSort } = props;
     const createSortHandler = (property) => (event) => {
         onRequestSort(event, property);
     };
@@ -63,7 +54,6 @@ function EnhancedTableHead(props) {
     return (
         <TableHead>
             <TableRow >
-                {/* key={employee.id.value} */}
                 {headCells.map((headCell) => (
                     <TableCell
                         key={headCell.id}
@@ -89,16 +79,6 @@ function EnhancedTableHead(props) {
         </TableHead>
     );
 }
-
-EnhancedTableHead.propTypes = {
-    classes: PropTypes.object.isRequired,
-    numSelected: PropTypes.number.isRequired,
-    onRequestSort: PropTypes.func.isRequired,
-    // onSelectAllClick: PropTypes.func.isRequired,
-    order: PropTypes.oneOf(['asc', 'desc']).isRequired,
-    orderBy: PropTypes.string.isRequired,
-    rowCount: PropTypes.number.isRequired,
-};
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -140,7 +120,7 @@ export default function EnhancedTable(props) {
     console.log(rows);
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
-    const [orderBy, setOrderBy] = React.useState('fname');
+    const [orderBy, setOrderBy] = React.useState('last');
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);
@@ -161,12 +141,6 @@ export default function EnhancedTable(props) {
         setPage(0);
     };
 
-    // const handleChangeDense = (event) => {
-    //     setDense(event.target.checked);
-    // };
-
-    // const isSelected = (name) => selected.indexOf(name) !== -1;
-
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
     return (
@@ -185,7 +159,6 @@ export default function EnhancedTable(props) {
                             numSelected={selected.length}
                             order={order}
                             orderBy={orderBy}
-                            // onSelectAllClick={handleSelectAllClick}
                             onRequestSort={handleRequestSort}
                             rowCount={rows.length}
                         />
@@ -193,8 +166,6 @@ export default function EnhancedTable(props) {
                             {stableSort(rows, getComparator(order, orderBy))
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row, index) => {
-                                    // const isItemSelected = isSelected(row.name);
-                                    const labelId = `enhanced-table-checkbox-${index}`;
 
                                     return (
                                         <TableRow
@@ -202,11 +173,11 @@ export default function EnhancedTable(props) {
                                             tabIndex={-1}
                                             key={row.id}
                                         >
-                                            <TableCell alight="center"><img src={row.photo} alt={row.last} widht="50" height="50" /></TableCell>
-                                            <TableCell align="right">{row.first}</TableCell>
-                                            <TableCell align="right">{row.last}</TableCell>
-                                            <TableCell align="right">{row.email}</TableCell>
-                                            <TableCell align="right">{row.phone}</TableCell>
+                                            <TableCell alight="center">{<img src={row.photo} alt={row.last} widht="50" height="50" />}</TableCell>
+                                            <TableCell align="center">{row.first}</TableCell>
+                                            <TableCell align="center">{row.last}</TableCell>
+                                            <TableCell align="center">{row.email}</TableCell>
+                                            <TableCell align="center">{row.phone}</TableCell>
                                         </TableRow>
                                     );
                                 })}
