@@ -2,6 +2,7 @@
   "name": "employee",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://nkleinmann.github.io/React-Employee-Tracker/",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/data-grid": "^4.0.0-alpha.8",
@@ -10,11 +11,14 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.3",
+    "gh-pages": "^3.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "3.4.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+   "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
