@@ -21,8 +21,8 @@ Fork repository and start contributing! Please reach out via email.
 Manual testing
 
 Screenshots:
-![1](https://user-images.githubusercontent.com/65608809/97816988-8e53d500-1c67-11eb-8354-4634953b4167.jpg)
-![2](https://user-images.githubusercontent.com/65608809/97816990-8eec6b80-1c67-11eb-8cbb-97032a86a5c7.jpg)
+![1](https://user-images.githubusercontent.com/65608809/98062861-ce0fed80-1e1c-11eb-803a-085f066cbed7.jpg)
+![2](https://user-images.githubusercontent.com/65608809/98062863-cfd9b100-1e1c-11eb-90f3-1322060c1e9a.jpg)
     
 ## Questions:
 Email: nekleinmann@gmail.com

@@ -76,9 +76,9 @@ class App extends Component {
             <div className="col-12 d-flex justify-content-center">
               <Search handleInputChange={this.handleInputChange} />
             </div>
-            <div className="col-12 d-flex justify-content-center">
+            {/* <div className="col-12 d-flex justify-content-center">
               <button className="btn btn-primary searchBtn">Search</button>
-            </div>
+            </div> */}
           </div>
           <br />
           <EnhancedTable rows={this.state.employees} />
