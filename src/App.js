@@ -19,7 +19,7 @@ class App extends Component {
   componentDidMount() {
     API.getEmployees()
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         let employeeDetails = response.data.results.map(employeeInfo => {
           return {
             id: employeeInfo.id.value,

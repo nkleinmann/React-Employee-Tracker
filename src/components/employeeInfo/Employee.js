@@ -10,7 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
 
-// Resource: https://material-ui.com/components/tables/
+// Resource: https://material-ui.com/components/tables/ (Enhanced Table)
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {

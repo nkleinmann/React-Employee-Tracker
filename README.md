@@ -1,6 +1,6 @@
 # React-Employee-Tracker
 
-Sort employees by email in ascending and descending order and search employees by last name.
+Sort employees in ascending and descending order and search employees based on criteria in columns.
 
 Deployed Application: [React-Employee-Tracker](https://nkleinmann.github.io/React-Employee-Tracker/)
             
