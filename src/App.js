@@ -42,6 +42,7 @@ class App extends Component {
   handleInputChange = event => {
     let value = event.target.value;
     const name = event.target.name;
+    console.log(value);
     // Set the state to input
     this.setState({
       [name]: value
@@ -80,7 +81,7 @@ class App extends Component {
             </div>
           </div>
           <br />
-          <EnhancedTable rows={this.state.currentSearchArray} />
+          <EnhancedTable rows={this.state.employees} />
         </div>
 
       </div>

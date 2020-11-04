@@ -10,24 +10,6 @@ const filter = {
         })
         return queriedEmployee;
     },
-
-    // // Function to compare values in array and sort (ascending or descending)
-    // compareValues: (key, order = "asc") => {
-    //     return function compare(a, b) {
-    //         const optionA = a[key].toUpperCase();
-    //         const optionB = b[key].toUpperCase();
-
-    //         let comparison = 0;
-    //         if (optionA > optionB) {
-    //             comparison = 1;
-    //         } else if (optionA < optionB) {
-    //             comparison = -1;
-    //         }
-    //         return (
-    //             (order === "desc") ? (comparison * -1) : comparison
-    //         );
-    //     };
-    // }
 }
 
 export { filter }

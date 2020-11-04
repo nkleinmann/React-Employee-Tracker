@@ -10,6 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
 
+// Resource: https://material-ui.com/components/tables/
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -29,6 +30,7 @@ function getComparator(order, orderBy) {
 
 function stableSort(array, comparator) {
     const stabilizedThis = array.map((el, index) => [el, index]);
+    // core of sorting method
     stabilizedThis.sort((a, b) => {
         const order = comparator(a[0], b[0]);
         if (order !== 0) return order;
@@ -39,10 +41,10 @@ function stableSort(array, comparator) {
 
 const headCells = [
     { id: 'image', numeric: false, disablePadding: true, label: 'Profile Image' },
-    { id: 'fname', numeric: true, disablePadding: false, label: 'First Name' },
-    { id: 'lname', numeric: true, disablePadding: false, label: 'Last Name' },
+    { id: 'first', numeric: true, disablePadding: false, label: 'First Name' },
+    { id: 'last', numeric: true, disablePadding: false, label: 'Last Name' },
     { id: 'email', numeric: true, disablePadding: false, label: 'Email' },
-    { id: 'phonenumber', numeric: true, disablePadding: false, label: 'Phone' },
+    { id: 'phone', numeric: true, disablePadding: false, label: 'Phone' },
 ];
 
 function EnhancedTableHead(props) {
@@ -105,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function EnhancedTable(props) {
-    console.log(props);
+    // console.log(props);
     const rows = props.rows.map(function (employee) {
         return {
             id: employee.id,
@@ -116,8 +118,6 @@ export default function EnhancedTable(props) {
             photo: employee.photo
         }
     });
-    console.log("This is the rows below")
-    console.log(rows);
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('last');
@@ -173,7 +173,7 @@ export default function EnhancedTable(props) {
                                             tabIndex={-1}
                                             key={row.id}
                                         >
-                                            <TableCell alight="center">{<img src={row.photo} alt={row.last} widht="50" height="50" />}</TableCell>
+                                            <TableCell alight="center">{<img src={row.photo} alt={row.last} width="50" height="50" />}</TableCell>
                                             <TableCell align="center">{row.first}</TableCell>
                                             <TableCell align="center">{row.last}</TableCell>
                                             <TableCell align="center">{row.email}</TableCell>
